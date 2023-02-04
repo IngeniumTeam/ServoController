@@ -2,11 +2,16 @@
 
 #include "Cherry.h"
 
-ToBasket::ToBasket(uint8_t pin, int iFrom = 0, int iTo = 90)
+ToBasket::ToBasket(uint8_t iPin, int iFrom = 0, int iTo = 90)
 {
     from = iFrom;
     to = iTo;
+    pin = iPin;
     pinMode(pin, OUTPUT);
+}
+
+void ToBasket::setup()
+{
     servo.attach(pin);
     move();
 }

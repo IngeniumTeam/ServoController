@@ -2,26 +2,31 @@
 
 #include "Cherry.h"
 
-Bariere::Bariere(uint8_t pin, int iFrom = 0, int iTo = 90)
+Barrier::Barrier(uint8_t iPin, int iFrom = 0, int iTo = 90)
 {
     from = iFrom;
     to = iTo;
+    pin = iPin;
     pinMode(pin, OUTPUT);
+}
+
+void Barrier::setup()
+{
     servo.attach(pin);
     move();
 }
 
-void Bariere::open()
+void Barrier::open()
 {
     servo.write(to);
 }
 
-void Bariere::close()
+void Barrier::close()
 {
     servo.write(from);
 }
 
-void Bariere::move()
+void Barrier::move()
 {
     if (state)
         open();
@@ -29,7 +34,7 @@ void Bariere::move()
         close();
 }
 
-void Bariere::move(bool iState)
+void Barrier::move(bool iState)
 {
     if (state == iState)
         return;
@@ -37,7 +42,7 @@ void Bariere::move(bool iState)
     move();
 }
 
-void Bariere::toggle()
+void Barrier::toggle()
 {
     state = !state;
     move();
