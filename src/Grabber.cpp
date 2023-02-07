@@ -46,13 +46,27 @@ void Grabber::setup()
 
 void Grabber::grab()
 {
-    servo2.write(180);
-    servo1.write(0);
+    open();
     delay(1500);
-    servo2.write(130);
+    close();
     delay(750);
-    servo1.write(160);
+    up();
     delay(1500);
+    open();
+}
+
+void Grabber::open()
+{
     servo2.write(180);
     servo1.write(0);
+}
+
+void Grabber::close()
+{
+    servo2.write(130);
+}
+
+void Grabber::up()
+{
+    servo1.write(160);
 }
