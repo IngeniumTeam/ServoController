@@ -60,4 +60,22 @@ class Costume
         void deploy();
         uint8_t to;
         uint8_t pin;
-}
+};
+
+class Grabber
+{
+    public:
+        Grabber(uint8_t iPin1, uint8_t iPin2);
+        Grabber(uint8_t iPin1, uint8_t iPin2, int iPulseMin1, int iPulseMax1);
+        Grabber(uint8_t iPin1, uint8_t iPin2, int iPulseMin1, int iPulseMax1, int iPulseMin2, int iPulseMax2);
+        Servo servo1;  
+        Servo servo2;  
+        void setup();  
+        void grab();  
+        uint8_t pin1;  
+        uint8_t pin2;  
+        int pulseMin1 = 0;  
+        int pulseMax1 = 0;  
+        int pulseMin2 = 0;  
+        int pulseMax2 = 0;  
+};  
