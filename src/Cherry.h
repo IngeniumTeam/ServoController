@@ -4,7 +4,7 @@
 class ToCake
 {
     public:
-        ToCake(uint8_t pin1, uint8_t pin2, int iFrom1 = 0, int iFrom2 = 0, int iTo1 = 90, int iTo2 = 90);
+        ToCake(uint8_t iPin1, uint8_t iPin2, int iFrom1 = 0, int iTo1 = 90, int iFrom2 = 0, int iTo2 = 90);
         void setup();
         void open();
     private:
@@ -69,9 +69,7 @@ class Costume
 class Grabber
 {
     public:
-        Grabber(uint8_t iPin1, uint8_t iPin2);
-        Grabber(uint8_t iPin1, uint8_t iPin2, int iPulseMin1, int iPulseMax1);
-        Grabber(uint8_t iPin1, uint8_t iPin2, int iPulseMin1, int iPulseMax1, int iPulseMin2, int iPulseMax2);
+        Grabber(uint8_t iPin1, uint8_t iPin2, int iPulseMin1, int iPulseMax1, int iPulseMin2, int iPulseMax2, int iFrom1 = 0, int iTo1 = 180, int iFrom2 = 130, int iTo2 = 160);
         void setup();
         void grab();
         void open();
@@ -82,8 +80,12 @@ class Grabber
         Servo servo2;
         uint8_t pin1;
         uint8_t pin2;
-        int pulseMin1 = 0;
-        int pulseMax1 = 0;
-        int pulseMin2 = 0;
-        int pulseMax2 = 0;
+        int pulseMin1;
+        int pulseMax1;
+        int pulseMin2;
+        int pulseMax2;
+        int from1;
+        int to1;
+        int from2;
+        int to2 ;
 };  
