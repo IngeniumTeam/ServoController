@@ -25,9 +25,10 @@ void ToCake::setup()
 void ToCake::open()
 {
     servo1.write(from1);
-    delay(200);
+    delay(100);
     servo2.write(to2);
-    delay(300);
-    servo1.write(to1);
+    delay(400);
     servo2.write(from2);
+    delay(200);
+    servo1.write(to1);
 }
