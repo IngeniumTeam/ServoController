@@ -57,11 +57,13 @@ class Barrier
 class Costume
 {
     public:
-        Costume(uint8_t iPin, int iTo = 180);
+        Costume(uint8_t iPin, int iFrom = 0, int iTo = 180);
         void setup();
         void deploy();
+        void retract();
     private:
         Servo servo;
+        uint8_t from;
         uint8_t to;
         uint8_t pin;
 };

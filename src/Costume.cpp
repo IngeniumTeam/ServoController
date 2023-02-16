@@ -2,8 +2,9 @@
 
 #include "Cherry.h"
 
-Costume::Costume(uint8_t iPin, int iTo = 180)
+Costume::Costume(uint8_t iPin, int iFrom = 0, int iTo = 180)
 {
+    from = iFrom;
     to = iTo;
     pin = iPin;
     pinMode(pin, OUTPUT);
@@ -17,4 +18,9 @@ void Costume::setup()
 void Costume::deploy()
 {
     servo.write(to);
+}
+
+void Costume::retract()
+{
+    servo.write(from);
 }
