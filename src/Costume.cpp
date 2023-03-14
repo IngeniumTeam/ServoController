@@ -24,3 +24,13 @@ void Costume::retract()
 {
     servo.write(from);
 }
+
+void Costume::toggle()
+{
+    if (state)
+        deploy();
+    else
+        retract();
+    state = !state;
+
+}

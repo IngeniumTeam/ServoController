@@ -61,11 +61,13 @@ class Costume
         void setup();
         void deploy();
         void retract();
+        void toggle();
     private:
         Servo servo;
         uint8_t from;
         uint8_t to;
         uint8_t pin;
+        bool state = false;
 };
 
 class Grabber
