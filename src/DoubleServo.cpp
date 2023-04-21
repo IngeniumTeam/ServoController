@@ -2,7 +2,7 @@
 
 #include "Cherry.h"
 
-ToCake::ToCake(uint8_t iPin1, uint8_t iPin2, int iFrom1 = 0, int iTo1 = 90, int iFrom2 = 0, int iTo2 = 90)
+DoubleServo::DoubleServo(uint8_t iPin1, uint8_t iPin2, int iFrom1 = 0, int iTo1 = 90, int iFrom2 = 0, int iTo2 = 90)
 {
     from1 = iFrom1;
     to1 = iTo1;
@@ -14,7 +14,7 @@ ToCake::ToCake(uint8_t iPin1, uint8_t iPin2, int iFrom1 = 0, int iTo1 = 90, int 
     pinMode(pin2, OUTPUT);
 }
 
-void ToCake::setup()
+void DoubleServo::setup()
 {
     servo1.attach(pin1);
     servo2.attach(pin2);
@@ -22,7 +22,7 @@ void ToCake::setup()
     servo2.write(from2);
 }
 
-void ToCake::open()
+void DoubleServo::open()
 {
     servo1.write(from1);
     delay(100);

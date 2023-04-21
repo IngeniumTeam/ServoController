@@ -2,7 +2,7 @@
 
 #include "Cherry.h"
 
-Barrier::Barrier(uint8_t iPin, int iFrom = 0, int iTo = 90)
+SingleServo::SingleServo(uint8_t iPin, int iFrom = 0, int iTo = 90)
 {
     from = iFrom;
     to = iTo;
@@ -10,23 +10,23 @@ Barrier::Barrier(uint8_t iPin, int iFrom = 0, int iTo = 90)
     pinMode(pin, OUTPUT);
 }
 
-void Barrier::setup()
+void SingleServo::setup()
 {
     servo.attach(pin);
     move();
 }
 
-void Barrier::open()
+void SingleServo::open()
 {
     servo.write(to);
 }
 
-void Barrier::close()
+void SingleServo::close()
 {
     servo.write(from);
 }
 
-void Barrier::move()
+void SingleServo::move()
 {
     if (state)
         open();
@@ -34,7 +34,7 @@ void Barrier::move()
         close();
 }
 
-void Barrier::move(bool iState)
+void SingleServo::move(bool iState)
 {
     if (state == iState)
         return;
@@ -42,8 +42,7 @@ void Barrier::move(bool iState)
     move();
 }
 
-void Barrier::toggle()
+void SingleServo::toggle()
 {
-    state = !state;
-    move();
+    move(!state);
 }
