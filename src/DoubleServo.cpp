@@ -18,17 +18,17 @@ void DoubleServo::setup()
 {
     servo1.attach(pin1);
     servo2.attach(pin2);
-    servo1.write(to1);
+    servo1.write(from1);
     servo2.write(from2);
 }
 
 void DoubleServo::open()
 {
-    servo1.write(from1);
-    delay(100);
-    servo2.write(to2);
-    delay(400);
-    servo2.write(from2);
-    delay(200);
     servo1.write(to1);
+    delay(200);
+    servo1.write(from1);
+    delay(400);
+    servo2.write(to2);
+    delay(200);
+    servo2.write(from2);
 }

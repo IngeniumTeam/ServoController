@@ -1,62 +1,52 @@
 #include <Arduino.h>
-#include <Timino.h>
 
 #include "Cherry.h"
 
-Vacuum::Vacuum(uint8_t iMotorPin, uint8_t iServoPin, int iFrom = 0, int iTo = 90, bool iReversed = false)
+Vacuum::Vacuum(uint8_t iMotorPin, SingleServo iServo, bool iReversed = false)
 {
-    from = iFrom;
-    to = iTo;
+    servo = iServo;
     motorPin = iMotorPin;
-    servoPin = iServoPin;
     reversed = iReversed;
     pinMode(motorPin, OUTPUT);
-    pinMode(servoPin, OUTPUT);
 }
 
 void Vacuum::setup()
 {
-    servo.attach(servoPin);
+    servo.setup();
     move();
-}
-
-void Vacuum::open()
-{
-    servo.write(to);
-}
-
-void Vacuum::close()
-{
-    servo.write(from);
 }
 
 void Vacuum::on()
 {
     digitalWrite(motorPin, !reversed);
+    servo.close();
 }
 
 void Vacuum::off()
 {
     digitalWrite(motorPin, reversed);
+    servo.open();
 }
 
-void Vacuum::move()
+bool Vacuum::move()
 {
-    if (state)
-        open();
-    else
-        close();
+    if (!state)
+    {
+        off();
+        servo.open();
+    }
+    return state;
 }
 
-void Vacuum::move(bool iState)
+bool Vacuum::move(bool iState)
 {
     if (state == iState)
         return;
     state = iState;
-    move();
+    return move();
 }
 
-void Vacuum::toggle()
+bool Vacuum::toggle()
 {
-    move(!state);
+    return move(!state);
 }

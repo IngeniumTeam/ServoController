@@ -39,20 +39,15 @@ class SingleServo
 class Vacuum
 {
     public:
-        Vacuum(uint8_t iMotorPin, uint8_t iServoPin, int iFrom = 0, int iTo = 90, bool iReversed = false);
+        Vacuum(uint8_t iMotorPin, SingleServo iServo, bool iReversed = false);
         void setup();
-        void open();
-        void close();
         void on();
         void off();
-        void move(bool iState);
-        void move();
-        void toggle();
+        bool move();
+        bool move(bool iState);
+        bool toggle();
     private:
-        Servo servo;
-        uint8_t from;
-        uint8_t to;
-        uint8_t servoPin;
+        SingleServo servo{0, 0, 0};
         uint8_t motorPin;
         bool state = false;
         bool reversed = false;
