@@ -32,3 +32,9 @@ void DoubleServo::open()
     delay(200);
     servo2.write(from2);
 }
+
+void DoubleServo::openAll()
+{
+    servo1.write(to1);
+    servo2.write(to2);
+}
