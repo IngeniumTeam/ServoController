@@ -7,9 +7,10 @@ class DoubleServo
         DoubleServo(uint8_t iPin1, uint8_t iPin2, int iFrom1 = 0, int iTo1 = 90, int iFrom2 = 0, int iTo2 = 90);
         void setup();
         void open();
-    private:
+        void openAll();
         Servo servo1;
         Servo servo2;
+    private:
         uint8_t from1;
         uint8_t to1;
         uint8_t from2;
@@ -28,8 +29,8 @@ class SingleServo
         void move(bool iState);
         void move();
         void toggle();
-    private:
         Servo servo;
+    private:
         uint8_t from;
         uint8_t to;
         uint8_t pin;
@@ -46,8 +47,8 @@ class Vacuum
         bool move();
         bool move(bool iState);
         bool toggle();
-    private:
         SingleServo servo{0, 0, 0};
+    private:
         uint8_t motorPin;
         bool state = false;
         bool reversed = false;
