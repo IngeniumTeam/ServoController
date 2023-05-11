@@ -27,7 +27,7 @@ void DoubleServo::open()
     servo1.write(to1);
     delay(200);
     servo1.write(from1);
-    delay(400);
+    delay(500);
     servo2.write(to2);
     delay(200);
     servo2.write(from2);
