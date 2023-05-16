@@ -26,9 +26,9 @@ class SingleServo
         void setup();
         void open();
         void close();
-        void move(bool iState);
-        void move();
-        void toggle();
+        bool move(bool iState);
+        bool move();
+        bool toggle();
         Servo servo;
     private:
         uint8_t from;

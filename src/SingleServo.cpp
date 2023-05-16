@@ -26,23 +26,24 @@ void SingleServo::close()
     servo.write(from);
 }
 
-void SingleServo::move()
+bool SingleServo::move()
 {
     if (state)
         open();
     else
         close();
+    return state;
 }
 
-void SingleServo::move(bool iState)
+bool SingleServo::move(bool iState)
 {
     if (state == iState)
         return;
     state = iState;
-    move();
+    return move();
 }
 
-void SingleServo::toggle()
+bool SingleServo::toggle()
 {
-    move(!state);
+    return move(!state);
 }
