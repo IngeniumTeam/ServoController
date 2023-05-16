@@ -33,7 +33,6 @@ bool Vacuum::move()
     if (!state)
     {
         off();
-        servo.open();
     }
     return state;
 }
