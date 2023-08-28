@@ -25,11 +25,11 @@ void DoubleServo::setup()
 void DoubleServo::open()
 {
     servo1.write(to1);
-    delay(200);
+    delay(250);
     servo1.write(from1);
     delay(500);
     servo2.write(to2);
-    delay(200);
+    delay(250);
     servo2.write(from2);
 }
 
