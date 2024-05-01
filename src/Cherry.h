@@ -30,11 +30,11 @@ class SingleServo
         bool move();
         bool toggle();
         Servo servo;
+        bool state = false;
     private:
         uint8_t from;
         uint8_t to;
         uint8_t pin;
-        bool state = false;
 };
 
 class Vacuum
